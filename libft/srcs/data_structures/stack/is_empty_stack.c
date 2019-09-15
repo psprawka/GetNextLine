@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   is_empty_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2018/10/08 13:14:12 by psprawka          #+#    #+#             */
+/*   Updated: 2018/10/08 14:10:11 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
-
-int			get_next_line(const int fd, char **line);
-
-#endif
+bool	ft_is_empty_stack(t_node *stack)
+{
+	return (stack ? false : true);
+}

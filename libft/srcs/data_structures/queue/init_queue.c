@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   init_queue.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2018/06/15 10:12:05 by psprawka          #+#    #+#             */
+/*   Updated: 2018/06/15 10:29:58 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
+t_queue		*ft_init_queue(void)
+{
+	t_queue *queue;
 
-int			get_next_line(const int fd, char **line);
+	if (!(queue = ft_memalloc(sizeof(t_queue))))
+		return (NULL);
+	queue->first = NULL;
+	queue->last = NULL;
+	return (queue);
+}
 
-#endif

@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2018/06/17 12:27:29 by psprawka          #+#    #+#             */
+/*   Updated: 2018/06/17 13:43:33 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
+char	*ft_strnstr(char *str, char *to_find, size_t len)
+{
+	size_t		i;
+	unsigned	x;
 
-int			get_next_line(const int fd, char **line);
+	i = 0;
+	if (!to_find)
+		return (str);
+	while (str[i] && (i < len))
+	{
+		x = 0;
+		while (str[i] && str[i] == to_find[x] && i < len)
+		{
+			x++;
+			i++;
+		}
+		if (to_find[x])
+			return ((char *)&str[i - x]);
+		i = i - x + 1;
+	}
+	return (NULL);
 
-#endif
+	//look here something is ugly and may not work
+}

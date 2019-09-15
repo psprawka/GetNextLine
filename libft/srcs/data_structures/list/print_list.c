@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   print_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2018/06/21 04:24:22 by psprawka          #+#    #+#             */
+/*   Updated: 2018/06/21 09:36:39 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
+void	ft_print_list(t_node *list)
+{
+	int		i;
+	t_node	*tmp;
 
-int			get_next_line(const int fd, char **line);
-
-#endif
+	i = 1;
+	tmp = list;
+	printf("%s\nLIST:\n", YELLOW);
+	while (tmp)
+	{
+		printf("%d. p:[%p], pdata:[%d]\n", i++, tmp, tmp->data);
+		tmp = tmp->next;
+	}
+	printf("%s\n", NORMAL);
+}

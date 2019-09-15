@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_family_rbtree.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2018/09/04 15:50:44 by psprawka          #+#    #+#             */
+/*   Updated: 2018/10/07 11:59:00 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
+#include "libft_rbtree.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
+t_rbtree	*ft_get_sibling_rbtree(t_rbtree *node)
+{
+	if (!node || !NPARENT)
+		return (NULL);
+	printf("THERE WILL BE A SIBLING\n");
+	return (NPARENT->left == node ? NPARENT->right : NPARENT->left);
+}
 
-int			get_next_line(const int fd, char **line);
-
-#endif
+t_rbtree	*ft_get_uncle_rbtree(t_rbtree *node)
+{
+	if (!node)
+		return (NULL);
+	return (ft_get_sibling_rbtree(NPARENT));
+}

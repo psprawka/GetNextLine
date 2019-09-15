@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   free_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2018/06/21 03:35:33 by psprawka          #+#    #+#             */
+/*   Updated: 2018/06/21 09:36:18 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
+void	ft_free_list(t_node **list, void (*fct_free)(void *))
+{
+	t_node *tmp;
 
-int			get_next_line(const int fd, char **line);
-
-#endif
+	tmp = *list;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		if (fct_free)
+			fct_free(tmp->data);
+		free(tmp);
+		*list = tmp; 
+	}
+}

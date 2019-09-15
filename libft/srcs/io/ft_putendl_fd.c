@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2018/05/22 13:55:59 by psprawka          #+#    #+#             */
+/*   Updated: 2019/09/14 13:28:52 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
+/*
+**	Ft_putendl_fd() writes a string to specified fd followed by a newline.
+*/
+void	ft_putendl_fd(char *s, int fd)
+{
+	int i;
 
-int			get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	while (s[i])
+		ft_putchar_fd(s[i++], fd);
+	ft_putchar_fd('\n', fd);
+}

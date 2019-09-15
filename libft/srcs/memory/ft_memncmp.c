@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2017/09/19 15:28:03 by psprawka          #+#    #+#             */
+/*   Updated: 2018/06/17 13:13:55 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
+int		ft_memncmp(void *s1, void *s2, size_t n)
+{
+	unsigned char	*ptr;
+	unsigned char	*ptr2;
 
-int			get_next_line(const int fd, char **line);
-
-#endif
+	ptr = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	while (n--)
+	{
+		if (*ptr != *ptr2)
+			return ((unsigned char)*ptr - (unsigned char)*ptr2);
+		ptr++;
+		ptr2++;
+	}
+	return (0);
+}

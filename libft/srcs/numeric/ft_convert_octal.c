@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_convert_octal.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2018/04/10 15:36:46 by psprawka          #+#    #+#             */
+/*   Updated: 2019/09/14 23:10:59 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
+char	*ft_convert_octal(unsigned long int nb)
+{
+	char	*print;
+	int		i;
 
-int			get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	print = (char *)malloc(22);
+	if (nb == 0)
+		i++;
+	while (nb != 0)
+	{
+		print[i++] = (nb % 8) + 48;
+		nb /= 8;
+	}
+	print[i] = '\0';
+	return (ft_strrev(print));
+}

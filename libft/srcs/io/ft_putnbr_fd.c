@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2017/09/21 19:35:37 by psprawka          #+#    #+#             */
+/*   Updated: 2019/09/14 20:15:59 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
 
-int			get_next_line(const int fd, char **line);
-
-#endif
+void	ft_putnbr_fd(long long nb, int fd)
+{
+	nb = 0; fd = 0;
+	// if (nb == -2147483648)
+	// {
+	// 	ft_putstr_fd("-2147483648", fd);
+	// 	return ;
+	// }
+	// if (nb < 0)
+	// {
+	// 	ft_putchar_fd('-', fd);
+	// 	nb = -nb;
+	// }
+	// if (nb < 10)
+	// {
+	// 	ft_putchar_fd(nb + 48, fd);
+	// 	return ;
+	// }
+	// ft_putnbr_fd(nb / 10, fd);
+	// ft_putchar_fd(nb % 10 + 48, fd);
+	// return ;
+}

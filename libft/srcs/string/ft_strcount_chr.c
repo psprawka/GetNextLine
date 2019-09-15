@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcount_chr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2019/09/10 18:00:51 by psprawka          #+#    #+#             */
+/*   Updated: 2019/09/14 12:54:17 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <stdio.h>
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
-
-int			get_next_line(const int fd, char **line);
-
-#endif
+int     ft_strcount_chr(char *str, char chr)
+{
+    int count;
+    int i;
+    
+    if (!str)
+        return (-1);
+    i = 0;
+    count = 0;
+    while (str[i])
+    {
+        if (str[i] == chr)
+            count++;
+        i++;
+    }
+    return (count);
+}

@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:41:16 by psprawka          #+#    #+#             */
-/*   Updated: 2017/10/10 12:41:18 by psprawka         ###   ########.fr       */
+/*   Created: 2017/07/03 11:13:42 by psprawka          #+#    #+#             */
+/*   Updated: 2019/09/14 21:42:26 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libftprintf.h"
 
-# define BUFF_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "Libft/includes/libft.h"
+static void	ucount(unsigned long long int nb, int *size)
+{
+	while (nb != 0)
+	{
+		*size += 1;
+		nb /= 10;
+	}
+}
 
-int			get_next_line(const int fd, char **line);
+char		*ft_ulltoa(unsigned long long int nb)
+{
+	char	*str;
+	int		size;
 
-#endif
+	size = 0;
+	ucount(nb, &size);
+	if (!(str = (char *)malloc(size)))
+		return (NULL);
+	str[size--] = '\0';
+	while (size > -1)
+	{
+		str[size--] = nb % 10 + 48;
+		nb /= 10;
+	}
+	return (str);
+}
